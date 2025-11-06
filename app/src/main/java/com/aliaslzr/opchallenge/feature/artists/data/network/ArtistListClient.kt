@@ -1,6 +1,6 @@
 package com.aliaslzr.opchallenge.feature.artists.data.network
 
-import com.aliaslzr.opchallenge.feature.artists.data.network.model.ArtistDTO
+import com.aliaslzr.opchallenge.feature.artists.data.network.model.RootArtist
 import com.aliaslzr.opchallenge.utils.ARTIST_LIST
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,5 +10,5 @@ interface ArtistListClient {
     @GET(ARTIST_LIST)
     suspend fun getArtistListClient(
         @Query("ids") ids: String,
-    ): Response<List<ArtistDTO>>
+    ): Response<RootArtist>
 }

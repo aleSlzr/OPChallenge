@@ -2,17 +2,18 @@ package com.aliaslzr.opchallenge.feature.artists.domain.mapper
 
 import com.aliaslzr.opchallenge.feature.artists.data.network.model.ArtistDTO
 import com.aliaslzr.opchallenge.feature.artists.data.network.model.ArtistImageDTO
+import com.aliaslzr.opchallenge.feature.artists.data.network.model.RootArtist
 import com.aliaslzr.opchallenge.feature.artists.domain.model.Artist
 import com.aliaslzr.opchallenge.feature.artists.domain.model.ArtistImage
 import com.aliaslzr.opchallenge.utils.Mapper
 
-class ArtistListDTOMapper : Mapper<List<ArtistDTO>, List<Artist>, Unit> {
+class ArtistListDTOMapper : Mapper<RootArtist, List<Artist>, Unit> {
     override fun transform(
-        input: List<ArtistDTO>,
+        input: RootArtist,
         additionalArgs: Unit?
     ): List<Artist> {
         val artistList: MutableList<Artist> = mutableListOf()
-        input.forEach { artistDTO ->
+        input.artists.forEach { artistDTO ->
             artistList.add(
                 ArtistDTOMapper().transform(artistDTO)
             )

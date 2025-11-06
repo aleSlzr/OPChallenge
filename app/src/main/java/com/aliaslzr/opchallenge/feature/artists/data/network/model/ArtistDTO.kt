@@ -2,6 +2,11 @@ package com.aliaslzr.opchallenge.feature.artists.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
+data class RootArtist(
+    @SerializedName("artists")
+    val artists : List<ArtistDTO>
+)
+
 data class ArtistDTO(
     @SerializedName("genres")
     val genres: List<String>,

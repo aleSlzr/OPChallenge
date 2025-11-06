@@ -77,7 +77,7 @@ fun OPGridItem(
                         .focusable(),
             )
             Text(
-                text = "${(rating * 10)}%",
+                text = "${rating}%",
             )
         }
     }
