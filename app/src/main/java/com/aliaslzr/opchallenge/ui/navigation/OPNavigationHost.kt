@@ -5,6 +5,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.aliaslzr.opchallenge.feature.albums.presentation.ui.AlbumListScreen
 import com.aliaslzr.opchallenge.feature.artists.presentation.ui.ArtistListScreen
 
 @Composable
@@ -19,8 +20,14 @@ fun OPNavHost(
         composable(OPRoutes.ArtistList.route) {
             ArtistListScreen(navHostController)
         }
-        composable(OPRoutes.Detail.route) {
-            // ArtistListScreen(navHostController)
+        composable(OPRoutes.Detail.route) { navBackStackEntry ->
+            val artistId = navBackStackEntry.arguments?.getString("artistId")
+            artistId?.let {
+                AlbumListScreen(
+                    artistId = artistId,
+                    navHostController = navHostController
+                )
+            }
         }
     }
 }

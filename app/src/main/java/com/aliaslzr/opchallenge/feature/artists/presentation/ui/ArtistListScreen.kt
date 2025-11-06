@@ -26,6 +26,8 @@ import androidx.navigation.NavHostController
 import com.aliaslzr.opchallenge.feature.artists.presentation.viewmodel.ArtistListViewModel
 import com.aliaslzr.opchallenge.ui.component.OPGridItem
 import com.aliaslzr.opchallenge.ui.component.OPLoadingProgressBar
+import com.aliaslzr.opchallenge.ui.navigation.OPRoutes
+import com.aliaslzr.opchallenge.ui.navigation.onNavigateToScreen
 
 @Composable
 fun ArtistListScreen(
@@ -67,28 +69,38 @@ fun ArtistListScreen(
 @Composable
 fun ArtistGrid(
     lazyGridState: LazyGridState,
-    artistUiState: ArtistListUIState,
+    artistUiState: ArtistListUiState,
     navHostController: NavHostController,
 ) {
     when (artistUiState) {
-        ArtistListUIState.Error -> {
+        ArtistListUiState.Error -> {
             Text(text = "Error")
         }
-        ArtistListUIState.Loading -> {
+        ArtistListUiState.Loading -> {
             OPLoadingProgressBar()
         }
-        is ArtistListUIState.Success -> {
+        is ArtistListUiState.Success -> {
             LazyVerticalGrid(
                 state = lazyGridState,
                 columns = GridCells.Fixed(2),
             ) {
-                items(artistUiState.artistList) { artist ->
+                items(
+                    items = artistUiState.artistList,
+                    key = { item ->
+                        item.id
+                    }
+                ) { artist ->
                     OPGridItem(
                         name = artist.name,
                         imageUrl = artist.images.first().url,
                         rating = artist.popularity,
                         onActionClicked = {
-                            // add action to navigate to details screen
+                            onNavigateToScreen(
+                                navHostController = navHostController,
+                                route = OPRoutes
+                                    .Detail
+                                    .artistIdRoute(artistId = artist.id)
+                            )
                         }
                     )
                 }

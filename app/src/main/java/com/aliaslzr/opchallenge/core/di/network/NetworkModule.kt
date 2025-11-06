@@ -1,6 +1,7 @@
 package com.aliaslzr.opchallenge.core.di.network
 
 import com.aliaslzr.opchallenge.core.network.RetrofitNetwork
+import com.aliaslzr.opchallenge.feature.albums.data.network.AlbumListClient
 import com.aliaslzr.opchallenge.feature.artists.data.network.ArtistListClient
 import com.aliaslzr.opchallenge.utils.API_KEY
 import com.aliaslzr.opchallenge.utils.AUTHORIZATION
@@ -55,4 +56,9 @@ internal object NetworkModule {
     @Provides
     fun artistListClient(retrofit: RetrofitNetwork): ArtistListClient =
         retrofit.provideRetrofit.create(ArtistListClient::class.java)
+
+    @Singleton
+    @Provides
+    fun albumListClient(retrofit: RetrofitNetwork): AlbumListClient =
+        retrofit.provideRetrofit.create(AlbumListClient::class.java)
 }

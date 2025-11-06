@@ -4,5 +4,7 @@ sealed class OPRoutes(
     val route: String,
 ) {
     data object ArtistList : OPRoutes("Artist")
-    data object Detail : OPRoutes("Detail")
+    data object Detail : OPRoutes("Detail/{artistId}") {
+        fun artistIdRoute(artistId: String) = "Detail/$artistId"
+    }
 }
