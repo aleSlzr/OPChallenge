@@ -1,0 +1,38 @@
+# ==== Android ==================================================
+
+# ==== Gradle files =============================================
+.gradle
+/build
+
+# ==== Local configuration file (sdk path, etc) =================
+/local.properties
+local.properties
+
+# ==== Android Studio generated files and folders ===============
+/captures
+.externalNativeBuild
+.cxx
+
+# ==== IntelliJ =================================================
+*.iml
+.idea/*
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# ==== Google Services (e.g. APIs or Firebase) ==================
+
+# ==== Fastlane =================================================
+
+# fastlane specific
+**/fastlane/report.xml
+**/fastlane/.env
+**/fastlane/README.md
+
+# ==== MacOS ====================================================
+.DS_Store
+
+# ==== Custom ===================================================
