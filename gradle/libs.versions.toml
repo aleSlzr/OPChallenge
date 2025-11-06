@@ -1,13 +1,27 @@
 [versions]
 agp = "8.13.0"
-kotlin = "2.0.21"
-coreKtx = "1.10.1"
+ksp = "2.2.10-2.0.2"
+kotlin = "2.2.10"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.8.0"
-composeBom = "2024.09.00"
+lifecycleRuntimeKtx = "2.9.4"
+activityCompose = "1.11.0"
+composeBom = "2025.09.01"
+
+dagger = "2.57.1"
+dagger-compose = "1.2.0"
+retrofit = "2.11.0"
+navigationCompose = "2.9.1"
+lifecycleRuntimeComposeAndroid = "2.8.7"
+coilVersion = "3.3.0"
+constraintlayout = "1.1.0"
+coroutines = "1.10.1"
+paging-version = "3.3.6"
+
+mockk-version = "1.14.5"
+turbine-version = "1.2.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,8 +39,39 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayout" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "dagger-compose" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose" , version.ref = "coilVersion" }
+coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp" , version.ref = "coilVersion" }
+
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+
+paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-version"}
+paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging-version"}
+
+######################## Testing Dependencies ########################
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk-version" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk-version" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk-version" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine-version" }
+paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "paging-version" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+daggerHiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
 
