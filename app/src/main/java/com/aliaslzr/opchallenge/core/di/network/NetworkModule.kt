@@ -1,5 +1,9 @@
 package com.aliaslzr.opchallenge.core.di.network
 
+import com.aliaslzr.opchallenge.core.network.RetrofitNetwork
+import com.aliaslzr.opchallenge.feature.artists.data.network.ArtistListClient
+import com.aliaslzr.opchallenge.utils.API_KEY
+import com.aliaslzr.opchallenge.utils.AUTHORIZATION
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -27,7 +31,7 @@ internal object NetworkModule {
     @Singleton
     fun provideInterceptor(): Interceptor = Interceptor {
         val request = it.request().newBuilder()
-        request.addHeader("Authorization", "iuhwefuhwoe")
+        request.addHeader(AUTHORIZATION, API_KEY)
         val actualRequest = request.build()
         it.proceed(actualRequest)
     }
@@ -46,4 +50,9 @@ internal object NetworkModule {
             .protocols(mutableListOf(Protocol.HTTP_1_1))
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun artistListClient(retrofit: RetrofitNetwork): ArtistListClient =
+        retrofit.provideRetrofit.create(ArtistListClient::class.java)
 }

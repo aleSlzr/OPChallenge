@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.ksp)
@@ -5,6 +8,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.daggerHiltAndroid)
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+localProperties.load(FileInputStream(localPropertiesFile))
+val clientId: String = localProperties.getProperty("CLIENT_ID").orEmpty()
+val clientSecret: String = localProperties.getProperty("CLIENT_SECRET").orEmpty()
 
 kotlin {
     jvmToolchain(11)
@@ -22,6 +31,9 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "CLIENT_ID", "\"${clientId}\"")
+        buildConfigField("String", "CLIENT_SECRET", "\"${clientSecret}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
