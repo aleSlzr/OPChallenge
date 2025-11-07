@@ -32,6 +32,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -63,7 +64,13 @@ fun AlbumListScreen(
             Text("Oops there is something wrong: ${(albumListUiState as AlbumListUiState.Error).errorMessage}")
         }
         AlbumListUiState.Loading -> {
-            OPLoadingProgressBar()
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                OPLoadingProgressBar()
+            }
         }
         is AlbumListUiState.Success -> {
             val albumListDetails = (albumListUiState as AlbumListUiState.Success).albumList
