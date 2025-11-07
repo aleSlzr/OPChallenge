@@ -1,6 +1,9 @@
 package com.aliaslzr.opchallenge.core.network
 
-import com.aliaslzr.opchallenge.utils.BASE_URL
+import com.aliaslzr.opchallenge.core.di.network.AuthClientQualifier
+import com.aliaslzr.opchallenge.core.di.network.MainClientQualifier
+import com.aliaslzr.opchallenge.utils.AUTH_BASE_URL
+import com.aliaslzr.opchallenge.utils.MAIN_BASE_URL
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -10,14 +13,23 @@ import javax.inject.Inject
 internal class RetrofitNetwork
     @Inject
     constructor(
-        client: OkHttpClient,
+        @MainClientQualifier mainClient: OkHttpClient,
+        @AuthClientQualifier authClient: OkHttpClient,
         gson: Gson,
     ) {
-        val provideRetrofit: Retrofit =
+        val provideMainRetrofit: Retrofit =
             Retrofit
                 .Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(MAIN_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client)
+                .client(mainClient)
+                .build()
+
+        val provideAuthRetrofit: Retrofit =
+            Retrofit
+                .Builder()
+                .baseUrl(AUTH_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(authClient)
                 .build()
     }
