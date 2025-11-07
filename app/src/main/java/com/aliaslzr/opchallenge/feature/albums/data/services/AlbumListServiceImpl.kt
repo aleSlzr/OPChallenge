@@ -22,4 +22,4 @@ class AlbumListServiceImpl
                     throw e
                 }
             }
-}
+    }

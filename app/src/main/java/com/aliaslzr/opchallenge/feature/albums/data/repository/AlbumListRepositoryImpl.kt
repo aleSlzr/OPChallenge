@@ -13,8 +13,8 @@ class AlbumListRepositoryImpl
     constructor(
         private val albumListService: AlbumListService,
     ) : AlbumListRepository {
-    override fun getAlbumListRepository(artistId: String): Flow<List<Album>> =
-        albumListService.getAlbumListService(artistId).map {
-            AlbumListDTOMapper().transform(it)
-        }
+        override fun getAlbumListRepository(artistId: String): Flow<List<Album>> =
+            albumListService.getAlbumListService(artistId).map {
+                AlbumListDTOMapper().transform(it)
+            }
 }

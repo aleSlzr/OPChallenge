@@ -6,7 +6,7 @@ data class RootAlbum(
     @SerializedName("total")
     val total: Long,
     @SerializedName("items")
-    val items: List<AlbumItemDTO>
+    val items: List<AlbumItemDTO>,
 )
 
 data class AlbumItemDTO(

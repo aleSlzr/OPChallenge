@@ -1,6 +1,5 @@
 package com.aliaslzr.opchallenge.feature.albums.domain.model
 
-
 data class Album(
     val totalTracks: Long,
     val albumId: String,

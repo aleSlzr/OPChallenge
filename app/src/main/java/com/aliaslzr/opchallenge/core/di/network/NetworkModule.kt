@@ -5,6 +5,7 @@ import com.aliaslzr.opchallenge.core.network.BearerInterceptor
 import com.aliaslzr.opchallenge.core.network.RetrofitNetwork
 import com.aliaslzr.opchallenge.feature.albums.data.network.AlbumListClient
 import com.aliaslzr.opchallenge.feature.artists.data.network.ArtistListClient
+import com.aliaslzr.opchallenge.feature.tracks.data.network.TrackListClient
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -107,6 +108,11 @@ internal object NetworkModule {
     @Provides
     fun albumListClient(retrofit: RetrofitNetwork): AlbumListClient =
         retrofit.provideMainRetrofit.create(AlbumListClient::class.java)
+
+    @Singleton
+    @Provides
+    fun trackListClient(retrofit: RetrofitNetwork): TrackListClient =
+        retrofit.provideMainRetrofit.create(TrackListClient::class.java)
 
     @Singleton
     @Provides
