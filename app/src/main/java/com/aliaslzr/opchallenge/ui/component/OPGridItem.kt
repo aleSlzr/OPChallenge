@@ -45,11 +45,6 @@ fun OPGridItem(
                     onActionClicked()
                 }.padding(8.dp),
         elevation = CardDefaults.elevatedCardElevation(8.dp),
-        colors =
-            CardDefaults
-                .cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-                ),
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
     ) {
         Column(
