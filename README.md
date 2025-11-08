@@ -65,4 +65,16 @@ CLIENT_SECRET
 ---
 
 ### 4. Create an emulator to run the app
-- 
+-  To create an Android emulator go to the right panel, you will see a small elephant icon
+- Below of that icon is the once to create an emulator, click on it
+- You will see a small plus icon (+), click on that and select ``Create Virtual Device``
+- You will see a new window
+  - Select phone
+  - Pixel 9 Pro
+  - Hit Next and Finish
+
+---
+
+### 5. Run the app
+- Click the green play button to run the app
+- This will launch a new window with the Android Emulator
