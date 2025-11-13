@@ -1,5 +1,6 @@
 package com.aliaslzr.opchallenge.core.di.network
 
+import com.aliaslzr.opchallenge.BuildConfig
 import com.aliaslzr.opchallenge.core.authentication.data.network.AuthClient
 import com.aliaslzr.opchallenge.core.network.BearerInterceptor
 import com.aliaslzr.opchallenge.core.network.RetrofitNetwork
@@ -15,6 +16,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
+import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -73,15 +75,27 @@ internal object NetworkModule {
     fun provideAuthOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder().build()
 
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG)
+                HttpLoggingInterceptor.Level.BODY
+            else
+                HttpLoggingInterceptor.Level.NONE
+        }
+
     @MainClientQualifier
     @Provides
     @Singleton
     fun provideApiOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
         bearerInterceptor: BearerInterceptor,
     ): OkHttpClient =
         OkHttpClient
             .Builder()
             .addInterceptor(bearerInterceptor)
+            .addInterceptor(loggingInterceptor)
             .build()
 
     @Provides
