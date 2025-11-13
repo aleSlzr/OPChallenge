@@ -90,6 +90,7 @@ class ArtistListViewModelTest {
         // Then
         viewModel.artistUiState.test {
             assertEquals(ArtistListUiState.Loading, awaitItem())
+            // TODO
             // Since the flow catches the error but doesn't emit anything,
             // we should only receive the Loading state
             expectNoEvents()
@@ -109,6 +110,7 @@ class ArtistListViewModelTest {
         // Then
         viewModel.artistUiState.test {
             assertEquals(ArtistListUiState.Loading, awaitItem())
+            // TODO
             // Since the flow catches the error but doesn't emit anything,
             // we should only receive the Loading state
             expectNoEvents()
@@ -272,6 +274,7 @@ class ArtistListViewModelTest {
         // Then
         viewModel.artistUiState.test {
             assertEquals(ArtistListUiState.Loading, awaitItem())
+            // TODO
             // Error is caught, so no more emissions
             expectNoEvents()
         }
