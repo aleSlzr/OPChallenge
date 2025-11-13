@@ -11,5 +11,5 @@ data class Artist(
 data class ArtistImage(
     val url: String,
     val height: Long,
-    val width: Long
+    val width: Long,
 )

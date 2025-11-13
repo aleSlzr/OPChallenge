@@ -20,6 +20,8 @@ constraintlayout = "1.1.0"
 coroutines = "1.10.1"
 paging-version = "3.3.6"
 datastore-preference-version = "1.1.7"
+splash-screen = "1.0.1"
+okHttp = "4.12.0"
 
 mockk-version = "1.14.5"
 turbine-version = "1.2.1"
@@ -61,6 +63,9 @@ datastore-preferences = { group = "androidx.datastore", name = "datastore-prefer
 
 paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-version"}
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging-version"}
+
+splash-screen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash-screen" }
+okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor",  version.ref = "okHttp" }
 
 ######################## Testing Dependencies ########################
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }

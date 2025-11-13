@@ -89,6 +89,12 @@ dependencies {
     // Datastore
     implementation(libs.datastore.preferences)
 
+    // Splash
+    implementation(libs.splash.screen)
+
+    // Interceptor
+    implementation(libs.okhttp.interceptor)
+
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
