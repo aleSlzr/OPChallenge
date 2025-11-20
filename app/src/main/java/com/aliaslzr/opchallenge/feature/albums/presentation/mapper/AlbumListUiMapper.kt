@@ -5,8 +5,9 @@ import com.aliaslzr.opchallenge.feature.albums.domain.model.AlbumArtist
 import com.aliaslzr.opchallenge.feature.albums.domain.model.AlbumImage
 import com.aliaslzr.opchallenge.feature.albums.presentation.model.AlbumUi
 import com.aliaslzr.opchallenge.utils.Mapper
+import javax.inject.Inject
 
-class AlbumListUiMapper : Mapper<List<Album>, List<AlbumUi>, Unit> {
+class AlbumListUiMapper @Inject constructor() : Mapper<List<Album>, List<AlbumUi>, Unit> {
     override fun transform(
         input: List<Album>,
         additionalArgs: Unit?,

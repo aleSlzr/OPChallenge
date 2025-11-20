@@ -20,6 +20,7 @@ class AlbumListViewModel
     @Inject
     constructor(
         private val getAlbumListUseCase: AlbumListUseCase,
+        private val albumListUiMapper: AlbumListUiMapper,
     ) : ViewModel() {
         private val _albumListUiState =
             MutableStateFlow<AlbumListUiState>(AlbumListUiState.Loading)
@@ -29,7 +30,7 @@ class AlbumListViewModel
             viewModelScope.launch {
                 getAlbumListUseCase(artistId)
                     .map { albumDetailList ->
-                        AlbumListUiMapper().transform(albumDetailList)
+                        albumListUiMapper.transform(albumDetailList)
                     }.onStart {
                         _albumListUiState.update {
                             AlbumListUiState.Loading
