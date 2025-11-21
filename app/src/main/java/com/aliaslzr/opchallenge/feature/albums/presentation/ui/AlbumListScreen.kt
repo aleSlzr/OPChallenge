@@ -25,7 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -68,10 +68,9 @@ fun AlbumListScreen(
             }
         }
         is AlbumListUiState.Success -> {
-            val albumListDetails = (albumListUiState as AlbumListUiState.Success).albumList
             AlbumListDetailsScaffold(
                 navHostController,
-                albumListDetails,
+                (albumListUiState as AlbumListUiState.Success).albumList,
             )
         }
     }
@@ -82,7 +81,17 @@ fun AlbumListDetailsScaffold(
     navHostController: NavHostController,
     albumListDetails: List<AlbumUi>,
 ) {
-    var expandedCardId by remember { mutableStateOf("") }
+    if (albumListDetails.isEmpty()) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Text("No albums found.")
+        }
+        return
+    }
+    var expandedCardId by rememberSaveable { mutableStateOf("") }
     Scaffold(
         topBar = {
             OPTopAppBar(

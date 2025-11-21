@@ -4,5 +4,5 @@ import com.aliaslzr.opchallenge.feature.albums.domain.model.Album
 import kotlinx.coroutines.flow.Flow
 
 interface AlbumListRepository {
-    fun getAlbumListRepository(artistId: String): Flow<List<Album>>
+    fun getAlbumListRepository(artistId: String, offset: Int): Flow<List<Album>>
 }

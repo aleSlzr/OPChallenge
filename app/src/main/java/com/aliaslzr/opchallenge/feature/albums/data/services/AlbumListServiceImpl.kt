@@ -11,10 +11,13 @@ class AlbumListServiceImpl
     constructor(
         private val albumListClient: AlbumListClient,
     ) : AlbumListService {
-        override fun getAlbumListService(artistId: String): Flow<RootAlbum> =
+        override fun getAlbumListService(
+            artistId: String,
+            offset: Int,
+        ): Flow<RootAlbum> =
             flow {
                 try {
-                    val response = albumListClient.getAlbumListClient(artistId)
+                    val response = albumListClient.getAlbumListClient(id = artistId, offset = offset)
                     response.body()?.let {
                         emit(it)
                     }

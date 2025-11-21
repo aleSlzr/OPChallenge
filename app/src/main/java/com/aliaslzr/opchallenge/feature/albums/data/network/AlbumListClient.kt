@@ -15,6 +15,8 @@ interface AlbumListClient {
         @Query("include_groups")
         includeGroups: String = "album",
         @Query("limit")
-        limit: Int = 10,
+        limit: Int = 3,
+        @Query("offset")
+        offset: Int,
     ): Response<RootAlbum>
 }

@@ -17,19 +17,20 @@ class AlbumListDTOMapper : Mapper<RootAlbum, List<Album>, Unit> {
         val albumList: MutableList<Album> = mutableListOf()
         input.items.forEach { albumDTO ->
             albumList.add(
-                AlbumDTOMapper().transform(albumDTO)
+                AlbumDTOMapper().transform(albumDTO, input.total)
             )
         }
         return albumList
     }
 }
 
-class AlbumDTOMapper : Mapper<AlbumItemDTO, Album, Unit> {
+class AlbumDTOMapper : Mapper<AlbumItemDTO, Album, Long> {
     override fun transform(
         input: AlbumItemDTO,
-        additionalArgs: Unit?,
+        additionalArgs: Long?,
     ): Album =
         Album(
+            totalAlbums = additionalArgs ?: 0,
             totalTracks = input.totalTracks,
             albumId = input.albumId,
             albumImages = AlbumImageListDTOMapper().transform(input.albumImages),

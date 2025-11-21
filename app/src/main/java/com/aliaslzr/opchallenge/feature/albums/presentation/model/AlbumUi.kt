@@ -3,6 +3,7 @@ package com.aliaslzr.opchallenge.feature.albums.presentation.model
 import com.aliaslzr.opchallenge.feature.tracks.presentation.model.TrackUi
 
 data class AlbumUi(
+    val totalAlbums: Long,
     val totalTracks: Long,
     val albumId: String,
     val albumImages: List<String>,

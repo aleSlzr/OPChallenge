@@ -8,5 +8,5 @@ class AlbumListUseCase
     constructor(
         private val albumListRepository: AlbumListRepository,
     ) {
-        operator fun invoke(artistId: String) = albumListRepository.getAlbumListRepository(artistId)
+        operator fun invoke(artistId: String, offset: Int) = albumListRepository.getAlbumListRepository(artistId, offset)
     }

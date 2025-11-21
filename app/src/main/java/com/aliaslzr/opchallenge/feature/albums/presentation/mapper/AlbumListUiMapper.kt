@@ -28,6 +28,7 @@ class AlbumUiMapper : Mapper<Album, AlbumUi, Unit> {
         additionalArgs: Unit?,
     ): AlbumUi =
         AlbumUi(
+            totalAlbums = input.totalAlbums,
             totalTracks = input.totalTracks,
             albumId = input.albumId,
             albumImages = AlbumImageUiMapper().transform(input.albumImages),
