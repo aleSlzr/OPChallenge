@@ -76,7 +76,7 @@ class AlbumListViewModel
                             }.catch { error ->
                                 emit(AlbumListUiState.Error(error.message.toString()))
                             }
-                    }
+                    },
             )
         }
     }

@@ -6,7 +6,7 @@ import javax.inject.Inject
 class ArtistListUseCase
     @Inject
     constructor(
-      private val artistListRepository: ArtistListRepository,
+        private val artistListRepository: ArtistListRepository,
     ) {
         operator fun invoke(artistIdList: String) = artistListRepository.getArtistListRepository(artistIdList)
     }
