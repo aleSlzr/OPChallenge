@@ -20,6 +20,7 @@ class TrackListViewModel
     @Inject
     constructor(
         private val getTrackListUseCase: TrackListUseCase,
+        private val trackListUiMapper: TrackListUiMapper,
     ) : ViewModel() {
         private val _trackListUiState = MutableStateFlow<TrackUiState>(TrackUiState.Loading)
         val trackListUiState: StateFlow<TrackUiState> = _trackListUiState
@@ -32,7 +33,7 @@ class TrackListViewModel
                             TrackUiState.Loading
                         }
                     }.map { trackList ->
-                        TrackListUiMapper().transform(trackList)
+                        trackListUiMapper.transform(trackList)
                     }.catch { error ->
                         _trackListUiState.update {
                             TrackUiState.Error(error.message.toString())

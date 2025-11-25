@@ -9,7 +9,6 @@ import com.aliaslzr.opchallenge.feature.albums.domain.usecase.AlbumListUseCase
 import com.aliaslzr.opchallenge.feature.albums.presentation.mapper.AlbumListUiMapper
 import com.aliaslzr.opchallenge.feature.albums.presentation.model.AlbumUi
 import com.aliaslzr.opchallenge.feature.albums.presentation.ui.AlbumListUiState
-import com.aliaslzr.opchallenge.feature.artists.presentation.ui.ArtistListUiState
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
